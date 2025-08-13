@@ -47,8 +47,3 @@ print(conteo)
 # Localidad con más predios
 localidad_top = conteo.iloc[0]
 print(f"\nLocalidad con más predios vendidos fue: *{localidad_top['Localidad']}* con {localidad_top['Cantidad_de_Predios']} predios.")
-
-df.to_csv(
-    r"C:\Users\prestamour\Desktop\Tareas-Ingenieria-de-Datos\Primer Corte Tareas\SoftwareETL\predios_mascomprado.csv",
-    sep=';', index=False, encoding='cp1252'
-)
