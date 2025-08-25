@@ -1,0 +1,15 @@
+Método:
+Interactivo, ya que permite contacto directo con asistentes de vacunación, administradores del sistema y equipo web, 
+facilitando la comprensión del flujo de trabajo y necesidades.
+
+Técnica:
+Encuesta, para obtener información clara y contextualizada, y que todos los clientes tengan acceso y asi se 
+puedan resolver dudas en el momento.
+
+Instrumento:
+Herramientas digitales para hacerlo en forms estructurado con preguntas abiertas y cerradas, complementado una 
+opción abierta donde dejen dudas.
+
+Conclusión:
+Se recomienda el método interactivo con entrevistas y un guion estructurado, asegurando la recopilación precisa de los 
+requisitos para el desarrollo del aplicativo.

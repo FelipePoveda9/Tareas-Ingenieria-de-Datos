@@ -8,7 +8,7 @@ df = pd.read_csv(
 
 # Eliminar columnas 'Folio' y 'Chip'
 df.drop(columns=['Folio', 'Chip'], inplace=True)
-
+   
 # Crear nueva columna 'Localidad' extrayendo el final del texto en 'Proyecto'
 df['Localidad'] = df['Proyecto'].str.extract(r'-\s*([A-Z0-9]+)$')
 
