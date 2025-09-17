@@ -1,72 +1,72 @@
--- Eliminar la base de datos si ya existe (opcional, con cuidado)
-DROP DATABASE IF EXISTS tienda_veterinaria;
+CREATE DATABASE BaseDatosMsc;
+USE BaseDatosMsc;
 
--- Crear base de datos
-CREATE DATABASE tienda_veterinaria;
-USE tienda_veterinaria;
-
--- Tabla: CLIENTE
-CREATE TABLE cliente (
-    cedula VARCHAR(20) PRIMARY KEY,
-    primer_nombre VARCHAR(50),
-    segundo_nombre VARCHAR(50),
-    primer_apellido VARCHAR(50),
-    segundo_apellido VARCHAR(50),
-    direccion VARCHAR(100),
-    telefono VARCHAR(20)
+CREATE TABLE Cliente (
+    cedula VARCHAR(20) PRIMARY KEY NOT NULL,
+    primer_nombre VARCHAR(30) NOT NULL,
+    segundo_nombre VARCHAR(30) NOT NULL,
+    primer_apellido VARCHAR(30) NOT NULL,
+    segundo_apellido VARCHAR(30) NOT NULL,
+    direccion VARCHAR(225) NOT NULL
 );
 
--- Tabla: MASCOTA
-CREATE TABLE mascota (
-    codigo_mascota INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50),
-    raza VARCHAR(50),
-    tipo_mascota VARCHAR(30),
-    genero VARCHAR(10),
-    cedula_cliente VARCHAR(20),
-    FOREIGN KEY (cedula_cliente) REFERENCES cliente(cedula)
+CREATE TABLE Telefono (
+    id_telefono INT PRIMARY KEY NOT NULL,
+    numero VARCHAR(20) NOT NULL,
+    tipo_telefono VARCHAR(25) NOT NULL,
+    cedula_cliente VARCHAR(20) NOT NULL,
+    FOREIGN KEY (cedula_cliente) REFERENCES Cliente(cedula)
 );
 
--- Tabla: VACUNA
-CREATE TABLE vacuna (
-    codigo_vacuna INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_vacuna VARCHAR(100),
-    dosis VARCHAR(50),
-    enfermedad VARCHAR(100)
+CREATE TABLE Producto (
+    id_producto VARCHAR(20) PRIMARY KEY NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    precio_unitario FLOAT 
 );
 
--- Tabla intermedia: APLICAR (relación N:M entre mascota y vacuna)
-CREATE TABLE aplicar (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    codigo_mascota INT,
-    codigo_vacuna INT,
-    fecha_aplicacion DATE,
-    FOREIGN KEY (codigo_mascota) REFERENCES mascota(codigo_mascota),
-    FOREIGN KEY (codigo_vacuna) REFERENCES vacuna(codigo_vacuna)
+CREATE TABLE Venta (
+    id_venta INT PRIMARY KEY,
+    fechadeventa DATE,
+    total FLOAT,
+    cedula_cliente VARCHAR(40),
+    FOREIGN KEY (cedula_cliente) REFERENCES Cliente(cedula)
 );
 
--- Tabla: PRODUCTO
-CREATE TABLE producto (
-    codigo_producto INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_producto VARCHAR(100),
-    precio DECIMAL(10, 2),
-    marca VARCHAR(50)
-);
-
--- Tabla: VENTA
-CREATE TABLE venta (
-    codigo_venta INT AUTO_INCREMENT PRIMARY KEY,
-    fecha DATE NOT NULL,
-    cedula_cliente VARCHAR(20),
-    FOREIGN KEY (cedula_cliente) REFERENCES cliente(cedula)
-);
-
--- Tabla intermedia: TIENE (relación N:M entre venta y producto)
-CREATE TABLE venta_producto (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    codigo_venta INT,
-    codigo_producto INT,
+CREATE TABLE DetalleVenta (
+    id_detalle INT PRIMARY KEY,
+    id_venta INT,
+    codigo_producto VARCHAR(50),
     cantidad INT,
-    FOREIGN KEY (codigo_venta) REFERENCES venta(codigo_venta),
-    FOREIGN KEY (codigo_producto) REFERENCES producto(codigo_producto)
+    precio FLOAT,
+    subtotal FLOAT,
+    FOREIGN KEY (id_venta) REFERENCES Venta(id_venta),
+    FOREIGN KEY (codigo_producto) REFERENCES Producto(id_producto)
+);
+
+CREATE TABLE Mascota (
+    codigo VARCHAR(10) PRIMARY KEY NOT NULL,
+    nombre_tabla VARCHAR(100) NOT NULL,
+    tipo VARCHAR(25) NOT NULL,
+    genero CHAR(1) CHECK (genero IN ('M', 'H')),
+    raza VARCHAR(100) NOT NULL,
+    cedula_cliente VARCHAR(20) NOT NULL,
+    FOREIGN KEY (cedula_cliente) REFERENCES Cliente(cedula) 
+);
+
+CREATE TABLE Vacuna (
+    nombre VARCHAR(30) PRIMARY KEY NOT NULL,
+    dosis VARCHAR(100) NOT NULL,
+    codigo VARCHAR(25) NOT NULL,
+    enfermedad VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE VacunaMascota (
+    id_vacuna_mascota INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    codigo_vacuna VARCHAR(100) NOT NULL,
+    codigo_mascota VARCHAR(25) NOT NULL,
+    fecha_aplicacion DATETIME NOT NULL,
+    observaciones TEXT NULL,
+    FOREIGN KEY (codigo_vacuna) REFERENCES Vacuna(nombre),
+    FOREIGN KEY (codigo_mascota) REFERENCES Mascota(codigo)
 );
