@@ -1,0 +1,233 @@
+CREATE DATABASE BaseDatosMsc;
+USE BaseDatosMsc;
+
+CREATE TABLE usuario (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_usuario VARCHAR(50) NOT NULL,
+    clave VARCHAR(100) NOT NULL,
+    rol VARCHAR(20) NOT NULL
+);
+
+INSERT INTO usuario (nombre_usuario, clave, rol) VALUES
+('jjaime', 'claveJaime123', 'cliente'),
+('jtomas', 'claveTomas456', 'cliente'),
+('jjuan', 'claveJuan789', 'cliente'),
+('jdavid', 'claveDavid101', 'cliente'),
+('jcamilo', 'claveCamilo202', 'cliente');
+
+
+CREATE TABLE cliente (
+    cedula VARCHAR(20) PRIMARY KEY,
+    primer_nombre VARCHAR(20),
+    segundo_nombre VARCHAR(20),
+    primer_apellido VARCHAR(20),
+    segundo_apellido VARCHAR(20),
+    direccion VARCHAR(200),
+    id_usuario INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+INSERT INTO cliente (cedula, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, id_usuario) VALUES
+('1011088281', 'Jaime', 'Alberto', 'Lopez', 'Gonzalez', 'Calle 10, Av. Principal', 1),
+('1011088282', 'Tomás', 'Antonio', 'Pérez', 'Martínez', 'Calle 11, Zona 5', 2),
+('1011088283', 'Juan', 'Carlos', 'Poveda', 'Jiménez', 'Calle 12, Edificio 5', 3),
+('1011088284', 'David', 'Andrés',  'Cabrera', 'Ruiz', 'Calle 13, Piso 3', 4),
+('1011088285', 'Camilo', 'Fernando', 'Gómez', 'Sánchez', 'Calle 14, Casa 8', 5);
+INSERT INTO cliente (cedula, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, direccion, id_usuario) VALUES 
+('1011088286', 'Luis', 'Miguel', 'Rodríguez', 'Vega', 'Calle 20, Torre B', 1);
+
+
+CREATE TABLE telefono (
+    id_telefono INT AUTO_INCREMENT PRIMARY KEY,
+    numero VARCHAR(20),
+    tipo_telefono VARCHAR(20),
+    cedula_cliente VARCHAR(20),
+    FOREIGN KEY (cedula_cliente) REFERENCES cliente(cedula)
+);
+
+INSERT INTO telefono (numero, tipo_telefono, cedula_cliente) VALUES
+('3101234567', 'Móvil', '1011088281'),
+('3112345678', 'Móvil', '1011088282'),
+('3123456789', 'Fijo', '1011088283'),
+('3134567890', 'Móvil', '1011088284'),
+('3145678901', 'Fijo', '1011088285');
+
+CREATE TABLE mascota (
+    codigo VARCHAR(10) PRIMARY KEY,
+    nombre VARCHAR(100),
+    tipo VARCHAR(20),
+    genero CHAR(1),
+    raza VARCHAR(20),
+    cedula_cliente VARCHAR(20),
+    FOREIGN KEY (cedula_cliente) REFERENCES cliente(cedula)
+);
+
+INSERT INTO mascota (codigo, nombre, tipo, genero, raza, cedula_cliente) VALUES
+('M001', 'Firulais', 'Perro', 'M', 'Labrador', '1011088281'),  -- Jaime
+('M002', 'Michi', 'Gato', 'F', 'Angora', '1011088282'),       -- Tomás
+('M003', 'Rocky', 'Perro', 'M', 'Pitbull', '1011088283'),     -- Juan
+('M004', 'Luna', 'Gato', 'F', 'Siamés', '1011088284'),        -- David
+('M005', 'Max', 'Perro', 'M', 'Pastor Alemán', '1011088285'); -- Camilo
+
+
+CREATE TABLE vacuna (
+    codigo VARCHAR(20) PRIMARY KEY,
+    nombre VARCHAR(100),
+    dosis VARCHAR(20),
+    enfermedad_que_trata VARCHAR(150)
+);
+
+INSERT INTO vacuna (codigo, nombre, dosis, enfermedad_que_trata) VALUES
+('V001', 'Rabia', '1', 'Rabia'),
+('V002', 'Leptospirosis', '2', 'Leptospirosis'),
+('V003', 'Parvovirus', '3', 'Parvovirus'),
+('V004', 'Adenovirus', '2', 'Adenovirus'),
+('V005', 'Distemper', '3', 'Distemper');
+
+CREATE TABLE vacunamascota (
+    id_vacuna_mascota INT AUTO_INCREMENT PRIMARY KEY,
+    codigo_vacuna VARCHAR(20),
+    codigo_mascota VARCHAR(10),
+    fecha_aplicacion DATE,
+    observaciones TEXT,
+    FOREIGN KEY (codigo_vacuna) REFERENCES vacuna(codigo),
+    FOREIGN KEY (codigo_mascota) REFERENCES mascota(codigo)
+);
+
+INSERT INTO vacunamascota (codigo_vacuna, codigo_mascota, fecha_aplicacion, observaciones) VALUES
+('V001', 'M001', '2025-09-01', 'Primera dosis para prevención de rabia'),  -- Firulais (Jaime)
+('V002', 'M002', '2025-09-02', 'Prevención de leptospirosis'),           -- Michi (Tomás)
+('V003', 'M003', '2025-09-03', 'Vacuna contra parvovirus'),             -- Rocky (Juan)
+('V004', 'M004', '2025-09-04', 'Adenovirus, dosis 2'),                  -- Luna (David)
+('V005', 'M005', '2025-09-05', 'Vacuna para distemper, dosis completa'); -- Max (Camilo)
+
+CREATE TABLE producto (
+    codigo_barras VARCHAR(20) PRIMARY KEY,
+    nombre VARCHAR(100),
+    marca VARCHAR(20),
+    precio FLOAT(20)
+);
+
+INSERT INTO producto (codigo_barras, nombre, marca, precio) VALUES
+('P001', 'Alimento Canino', 'Pedigree', 25.50),
+('P002', 'Alimento Felino', 'Whiskas', 18.00),
+('P003', 'Collar Antipulgas', 'Frontline', 15.00),
+('P004', 'Cama para Mascota', 'PetSoft', 40.00),
+('P005', 'Juguete para Gato', 'Catnip', 10.00);
+
+CREATE TABLE venta (
+    id_venta INT AUTO_INCREMENT PRIMARY KEY,
+    fecha_venta DATE,
+    total FLOAT(20),
+    cedula_cliente VARCHAR(20),
+    FOREIGN KEY (cedula_cliente) REFERENCES cliente(cedula)
+);
+
+INSERT INTO venta (fecha_venta, total, cedula_cliente) VALUES
+('2025-09-10', 55.50, '1011088281'),
+('2025-09-11', 45.00, '1011088282'),
+('2025-09-12', 70.00, '1011088283'),
+('2025-09-13', 85.00, '1011088284'),
+('2025-09-14', 40.00, '1011088285');
+
+CREATE TABLE detalleventa (
+    id_detalle INT AUTO_INCREMENT PRIMARY KEY,
+    id_venta INT,
+    codigo_producto VARCHAR(20),
+    cantidad INT,
+    precio_unitario FLOAT(20),
+    subtotal FLOAT(20),
+    FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
+    FOREIGN KEY (codigo_producto) REFERENCES producto(codigo_barras)
+);
+
+INSERT INTO detalleventa (id_venta, codigo_producto, cantidad, precio_unitario, subtotal) VALUES
+(1, 'P001', 1, 25.50, 25.50),
+(2, 'P002', 2, 18.00, 36.00),
+(3, 'P003', 1, 9.00, 9.00),
+(4, 'P004', 2, 25.50, 51.00),
+(5, 'P005', 1, 10.00, 10.00);
+
+/*Sintaxis: ejemplo todas las mascotas de un cliente por cédula*/ 
+DELIMITER $$
+create procedure ObtenerMascotasCliente(in cedula_cliente_param VARCHAR(20))
+BEGIN
+    select nombre, tipo, genero, raza
+    from mascota
+    where cedula_cliente in(cedula_cliente_param);
+END $$
+DELIMITER ;
+call ObtenerMascotasCliente('1011088281');
+
+/*Vacunas asociadas a una mascuta RETO 7*/
+DELIMITER $$
+create procedure VerVacunasMascotas()
+BEGIN
+    select m.nombre as nombre_mascota, v.nombre as nombre_vacuna, v.dosis,v.enfermedad_que_trata, vm.fecha_aplicacion, vm.observaciones
+    from vacunamascota vm join vacuna v on vm.codigo_vacuna in(v.codigo)
+    join mascota m on vm.codigo_mascota in(m.codigo);
+END $$
+DELIMITER ;
+call VerVacunasMascotas();
+
+/*Mascotas existentes por cliente RETO 8*/
+DELIMITER $$
+CREATE PROCEDURE RegistrarMascotaSiNoExiste (
+    in p_codigo VARCHAR(10),
+    in p_nombre VARCHAR(100),
+    in p_tipo VARCHAR(20),
+    in p_genero CHAR(1),
+    in p_raza VARCHAR(20),
+    in p_cedula_cliente VARCHAR(20)
+)
+BEGIN
+    declare mascota_existente VARCHAR(10);
+-- Buscar si hay alguna mascota registrada para el cliente
+    select codigo into mascota_existente
+    from mascota
+    where cedula_cliente in(p_cedula_cliente);
+
+-- Si no tiene mascota registrada, se inserta
+    if mascota_existente is null then
+        insert into mascota(codigo, nombre, tipo, genero, raza, cedula_cliente) values (p_codigo, p_nombre, p_tipo, p_genero, p_raza, p_cedula_cliente);
+		select 'La macota no existe. Añadiendo mascota...' as mensaje;
+    else
+        select 'El cliente ya tiene una mascota registrada.' as mensaje;
+    end if;
+END $$
+DELIMITER ;
+
+call RegistrarMascotaSiNoExiste(
+    'M010', 'Boby', 'Perro', 'M', 'Beagle', '1011088286' -- Luis no tiene mascota le asigno Boby
+);
+call RegistrarMascotaSiNoExiste(
+    'M011', 'Toby', 'Gato', 'M', 'Persa', '1011088281'  -- Jaime ya tiene a Firulais
+);
+
+-- Ejercicio de practica telefono relacionado con cedula cliente
+DELIMITER $$
+CREATE PROCEDURE RegistrarTelefonoSiNoExiste (
+    in p_numero varchar(20),
+    in p_tipo_telefono varchar(20),
+    in p_cedula_cliente varchar(20)
+)
+BEGIN
+    declare telefono_existente VARCHAR(10);
+-- Buscar si hay algun telfono registrado para el cliente
+    select numero into telefono_existente
+    from telefono
+    where cedula_cliente in(p_cedula_cliente);
+
+-- Si no tiene telefono registrado, se inserta y registra
+    if telefono_existente is null then
+        insert into telefono(numero, tipo_telefono, cedula_cliente) values (p_numero, p_tipo_telefono, p_cedula_cliente);
+		select 'El telefono no existe. Añadiendo telefono...' as mensaje;
+    else
+        select 'El cliente ya tiene telefono registrado.' as mensaje;
+    end if;
+END $$
+DELIMITER ;
+describe telefono;
+call RegistrarTelefonoSiNoExiste('3203684677', 'Movil', '1011088286');
+drop procedure RegistrarTelefonoSiNoExiste;
+select * from telefono;
