@@ -1,0 +1,442 @@
+[{
+  "_id": {
+    "$oid": "690abf0b72131d2237c23395"
+  },
+  "name": "Queen",
+  "country": "UK",
+  "url": "https://queenonline.com",
+  "albums": [
+    {
+      "title": "A Night at the Opera",
+      "songs": [
+        {
+          "titleSong": "You're My Best Friend",
+          "autor": [
+            "Queen"
+          ],
+          "duration": 170
+        },
+        {
+          "titleSong": "Lazing on a Sunday Afternoon",
+          "autor": [
+            "Freddie Mercury"
+          ],
+          "duration": 120
+        },
+        {
+          "titleSong": "Bohemian Rhapsody",
+          "autor": [
+            "Freddie Mercury"
+          ],
+          "duration": 354
+        },
+        {
+          "titleSong": "Love of My Life",
+          "autor": [
+            "Freddie Mercury"
+          ],
+          "duration": 220
+        },
+        {
+          "titleSong": "God Save the Queen",
+          "autor": [
+            "Brian May"
+          ],
+          "duration": 100
+        }
+      ]
+    },
+    {
+      "title": "Queen II",
+      "dateCreated": {
+        "$date": "1974-03-08T00:00:00.000Z"
+      },
+      "songs": [
+        {
+          "titleSong": "Procession",
+          "autor": [
+            "Brian May"
+          ],
+          "duration": 90
+        },
+        {
+          "titleSong": "Father to Son",
+          "autor": [
+            "Brian May"
+          ],
+          "duration": 370
+        },
+        {
+          "titleSong": "White Queen",
+          "autor": [
+            "Freddie Mercury"
+          ],
+          "duration": 260
+        },
+        {
+          "titleSong": "Some Day One Day",
+          "autor": [
+            "Brian May"
+          ],
+          "duration": 300
+        },
+        {
+          "titleSong": "Funny How Love Is",
+          "autor": [
+            "Freddie Mercury"
+          ],
+          "duration": 160
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "690abf0b72131d2237c23396"
+  },
+  "name": "Måneskin",
+  "country": "Italy",
+  "url": "https://maneskin.com",
+  "albums": [
+    {
+      "title": "Il ballo della vita",
+      "dateCreated": {
+        "$date": "2018-10-26T00:00:00.000Z"
+      }
+    },
+    {
+      "title": "Teatro d’ira: Vol. I",
+      "dateCreated": {
+        "$date": "2021-03-19T00:00:00.000Z"
+      },
+      "songs": [
+        {
+          "titleSong": "Zitti e buoni",
+          "autor": [
+            "Måneskin"
+          ],
+          "duration": 210
+        },
+        {
+          "titleSong": "Coraline",
+          "autor": [
+            "Måneskin"
+          ],
+          "duration": 300
+        },
+        {
+          "titleSong": "I Wanna Be Your Slave",
+          "autor": [
+            "Måneskin"
+          ],
+          "duration": 170
+        },
+        {
+          "titleSong": "For Your Love",
+          "autor": [
+            "Måneskin"
+          ],
+          "duration": 240
+        },
+        {
+          "titleSong": "Vent'anni",
+          "autor": [
+            "Måneskin"
+          ],
+          "duration": 240
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "690abf0b72131d2237c23397"
+  },
+  "name": "Fuerza Regida",
+  "country": "Mexico",
+  "url": "https://fuerzaregida.com",
+  "albums": [
+    {
+      "title": "111XPantia",
+      "dateCreated": {
+        "$date": "2020-05-02T00:00:00.000Z"
+      },
+      "songs": [
+        {
+          "titleSong": "GodFather",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 230
+        },
+        {
+          "titleSong": "Peliculiando",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 200
+        },
+        {
+          "titleSong": "Chavalitas",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 210
+        },
+        {
+          "titleSong": "Malboro Rojo",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 190
+        },
+        {
+          "titleSong": "Caperuza",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 240
+        }
+      ]
+    },
+    {
+      "title": "Pa Las Baby's y Belikeada",
+      "dateCreated": {
+        "$date": "2023-10-20T00:00:00.000Z"
+      },
+      "songs": [
+        {
+          "titleSong": "Crazyz",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 200
+        },
+        {
+          "titleSong": "Harley Quinn",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 180
+        },
+        {
+          "titleSong": "Barbiez",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 210
+        },
+        {
+          "titleSong": "Sabor Fresa",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 220
+        },
+        {
+          "titleSong": "Una Cerveza",
+          "autor": [
+            "Fuerza Regida"
+          ],
+          "duration": 240
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "690abf0b72131d2237c23398"
+  },
+  "name": "Grupo Frontera",
+  "country": "Mexico",
+  "url": "https://grupofrontera.com",
+  "albums": [
+    {
+      "title": "Mala Mía",
+      "dateCreated": {
+        "$date": "2024-12-19T00:00:00.000Z"
+      },
+      "songs": [
+        {
+          "titleSong": "Me Jalo",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 190
+        },
+        {
+          "titleSong": "0 Sentimientos",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 210
+        },
+        {
+          "titleSong": "SOS",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 200
+        },
+        {
+          "titleSong": "Coqueta",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 220
+        },
+        {
+          "titleSong": "Aurora",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 250
+        }
+      ]
+    },
+    {
+      "title": "Lo que me falta por llorar",
+      "dateCreated": {
+        "$date": "2025-10-23T00:00:00.000Z"
+      },
+      "songs": [
+        {
+          "titleSong": "Se me sale",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 200
+        },
+        {
+          "titleSong": "Si me quiere",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 180
+        },
+        {
+          "titleSong": "Monterrey",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 220
+        },
+        {
+          "titleSong": "Ay bebé",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 230
+        },
+        {
+          "titleSong": "Que bueno que te fuiste",
+          "autor": [
+            "Grupo Frontera"
+          ],
+          "duration": 240
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "690abf0b72131d2237c23399"
+  },
+  "name": "The Beatles",
+  "country": "UK",
+  "url": "https://www.thebeatles.com",
+  "albums": [
+    {
+      "title": "Abbey Road",
+      "dateCreated": {
+        "$date": {
+          "$numberLong": "-8380800000"
+        }
+      },
+      "songs": [
+        {
+          "titleSong": "Come Together",
+          "autor": [
+            "Lennon–McCartney"
+          ],
+          "duration": 260
+        },
+        {
+          "titleSong": "Something",
+          "autor": [
+            "George Harrison"
+          ],
+          "duration": 230
+        },
+        {
+          "titleSong": "Oh! Darling",
+          "autor": [
+            "Lennon–McCartney"
+          ],
+          "duration": 200
+        },
+        {
+          "titleSong": "Because",
+          "autor": [
+            "Lennon–McCartney"
+          ],
+          "duration": 160
+        },
+        {
+          "titleSong": "Here Comes the Sun",
+          "autor": [
+            "George Harrison"
+          ],
+          "duration": 185
+        }
+      ]
+    },
+    {
+      "title": "Anthology Highlights",
+      "dateCreated": {
+        "$date": "1996-10-28T00:00:00.000Z"
+      },
+      "songs": [
+        {
+          "titleSong": "Real Love - 1996",
+          "autor": [
+            "John Lennon"
+          ],
+          "duration": 230
+        },
+        {
+          "titleSong": "Tomorrow Never Knows",
+          "autor": [
+            "Lennon–McCartney"
+          ],
+          "duration": 210
+        },
+        {
+          "titleSong": "No Reply (Take 2)",
+          "autor": [
+            "Lennon–McCartney"
+          ],
+          "duration": 200
+        },
+        {
+          "titleSong": "I Wanna Be Your Man",
+          "autor": [
+            "Lennon–McCartney"
+          ],
+          "duration": 150
+        },
+        {
+          "titleSong": "Roll Over Beethoven",
+          "autor": [
+            "Chuck Berry"
+          ],
+          "duration": 170
+        }
+      ]
+    }
+  ]
+}]
