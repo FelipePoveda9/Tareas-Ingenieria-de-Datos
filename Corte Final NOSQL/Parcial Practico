@@ -1,0 +1,111 @@
+// Reto 1: Hacer 3 inserciones y colección nueva
+db.bands.insertMany([
+    {
+      name: 'Queen',
+      country: 'UK',
+      members: 'Freddie Mercury, Brian May, Roger Taylor y Barry Mitchell',
+      albums: [
+        {
+          title: 'A Night at the Opera',
+          dateCreated: 1975-11-21,
+          solds: 12,
+          rating: 4
+        },
+        {
+          title: 'Queen II',
+          dateCreated: "1974-03-08",
+          solds: 400,
+          rating: 5
+        }
+      ]
+    },
+    {
+      name: 'Fuerza Regida',
+      country: 'México',
+      members: 'Jesús Ortiz Paz, Moisés López, Samuel Jaimez y Khrystian Ramos',
+      albums: [
+        {
+          title: '111XPantia',
+          dateCreated: "2025-05-02",
+          solds: 4000,
+          rating: 5
+        }
+      ]
+    },
+    {
+      name: 'Maneskin',
+      country: 'Italia',
+      members: 'Damiano David, Victoria De Angelis, Thomas Raggi y Ethan Torchio',
+      albums: [
+        {
+          title: 'Il ballo della vita',
+          dateCreated: 2018-11-21,
+          solds: 1520,
+          rating: 4
+        },
+        {
+          title: 'Rush!',
+          dateCreated: "2023-03-08",
+          solds: 60,
+          rating: 3
+        }
+      ]
+    }
+    )]
+    
+    
+    // Reto 2: Contar cuantos albums tiene cada banda 
+    db.bands.aggregate([
+      { 
+        $unwind: "$albums" 
+      },
+      { 
+        $group: {
+          _id: "$name",
+          albumCount: { $sum: 1 },
+          totalSales: { $sum: "$albums.solds" }
+        }
+      },
+      {
+        $sort: { albumCount: -1 }
+      }
+    ])
+    
+    
+    // Reto 3: Top 2 de almbums
+    db.bands.aggregate([
+      {
+        $unwind: "$albums"
+      },
+      {
+        $project: {
+          band: "$name",
+          title: "$albums.title",
+          solds: "$albums.solds"
+        }
+      },
+      {
+        $sort: { solds: -1 }
+      },
+      { 
+        $limit: 2 
+      }
+    ])
+    
+    // Reto 4: Promedio por calificación de albums
+    
+    db.bands.aggregate([
+      {
+        $unwind: "$albums"
+      },
+      {
+        $group: { 
+          _id: "$name",
+          rankingCount: { $sum: 1 },
+          avg: { $avg: "$album.rating" }
+          }
+      },
+        {
+          $sort: { rating: -1 }
+        }
+    ])
